@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f9d63" />
+
+    <title>Unit Price Calculator — Compare Cost per 100g, kg, Litre or Each</title>
+    <meta
+      name="description"
+      content="Free unit price calculator. Enter the price and size of two or more products and instantly see which is cheaper per 100g, per kg, per 100mL, per litre or per item — even for multi-buys."
+    />
+    <link rel="canonical" href="https://unit-price-calculator.correia95.workers.dev/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Unit Price Calculator — is it actually cheaper?" />
+    <meta property="og:description" content="Compare the real cost per 100g, kg, litre or item across different pack sizes and multi-buys." />
+    <meta property="og:url" content="https://unit-price-calculator.correia95.workers.dev/" />
+    <meta property="og:image" content="https://unit-price-calculator.correia95.workers.dev/og.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Unit Price Calculator" />
+    <meta name="twitter:description" content="Compare the real cost per 100g, kg, litre or item — even for multi-buys." />
+    <meta name="twitter:image" content="https://unit-price-calculator.correia95.workers.dev/og.svg" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Unit Price Calculator",
+        "url": "https://unit-price-calculator.correia95.workers.dev/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+        "description": "Compare the unit price of products by cost per 100g, per kg, per 100mL, per litre or per item."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you calculate unit price?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Divide the total price by the total quantity, then scale to a standard amount. For example, $4.50 for a 750g pack is $4.50 ÷ 750 = $0.006 per gram, or $0.60 per 100g, or $6.00 per kg. Comparing products at the same 'per 100g' or 'per litre' figure tells you which is genuinely cheaper."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it always cheaper to buy the bigger pack?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Larger packs usually have a lower unit price, but not always — 'family size', premium ranges and multi-buys are sometimes dearer per 100g than the standard pack. Checking the unit price is the only reliable way to know."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is unit pricing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Unit pricing is showing the price of a product per standard unit of measure, such as per 100g or per litre, so shoppers can compare different brands and pack sizes fairly. In Australia it is required on shelf labels and online for most grocery items under the Retail Grocery Industry (Unit Pricing) Code."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <section class="explainer">
+      <h2>How the unit price calculator works</h2>
+      <p>
+        Supermarket packs come in awkward sizes — 375g here, 1.2kg there, a “3 for $5” deal on
+        the end cap. The only fair way to compare them is the <strong>unit price</strong>: the
+        cost per a fixed amount like 100g, 1kg or 1 litre. Enter each product’s price and size
+        above and this tool does the division for you, flags the best value, and tells you how
+        much you save.
+      </p>
+
+      <h3>The formula</h3>
+      <p><strong>Unit price = total price ÷ total quantity.</strong> Then multiply to a standard amount:</p>
+      <table>
+        <thead>
+          <tr><th>Example</th><th>Working</th><th>Unit price</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$4.50 for 750g</td><td>4.50 ÷ 750 × 100</td><td>$0.60 per 100g ($6.00/kg)</td></tr>
+          <tr><td>$7.00 for 1.2kg</td><td>7.00 ÷ 1200 × 100</td><td>$0.58 per 100g ($5.83/kg)</td></tr>
+          <tr><td>3 × 400g for $5.00</td><td>5.00 ÷ 1200 × 100</td><td>$0.42 per 100g ($4.17/kg)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Tips for comparing at the shops</h3>
+      <ul>
+        <li>Match the units first — convert everything to grams or millilitres in your head, or just pick the right unit in the dropdown.</li>
+        <li>For a multi-buy, put the single-pack size in “Size” and the number of packs in “Packs”.</li>
+        <li>Watch for “was / now” pricing — the unit price on the shelf label sometimes still shows the old size.</li>
+        <li>Cheaper per kg isn’t always the right call if you’ll throw half of it out. Buy the amount you’ll actually use.</li>
+      </ul>
+
+      <h3>Frequently asked questions</h3>
+      <h4>Does this work for millilitres and litres?</h4>
+      <p>Yes — switch to <em>Volume</em> and compare per 100mL and per litre. Use <em>Each / pack</em> for things sold by count, like toilet rolls or dishwasher tablets.</p>
+      <h4>Is my data saved?</h4>
+      <p>Your last comparison is kept in your browser so it’s there next time. Nothing is uploaded and there’s no tracking. The “Share” button puts the comparison in the link itself.</p>
+      <h4>Is unit pricing required in Australia?</h4>
+      <p>Most grocery retailers must display unit prices under the Retail Grocery Industry (Unit Pricing) Code. This calculator is handy when a label is missing, unclear, or shown in a different unit to the product next to it.</p>
+
+      <footer>General information only. Always double-check the price at the register.</footer>
+    </section>
+  </body>
+</html>
