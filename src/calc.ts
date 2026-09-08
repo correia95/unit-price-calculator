@@ -85,13 +85,45 @@ export function rank(items: Item[]): Ranked[] {
   });
 }
 
+// Currency comparison here is ratio-based, so the symbol is cosmetic — pick it
+// from the viewer's locale rather than forcing one, and let Intl choose the
+// grouping/decimal style to match.
+const REGION_CCY: Record<string, string> = {
+  AU: 'AUD', US: 'USD', GB: 'GBP', CA: 'CAD', NZ: 'NZD', IN: 'INR', SG: 'SGD',
+  ZA: 'ZAR', JP: 'JPY', IE: 'EUR', DE: 'EUR', FR: 'EUR', ES: 'EUR', IT: 'EUR',
+  NL: 'EUR', BE: 'EUR', AT: 'EUR', PT: 'EUR', FI: 'EUR',
+};
+
+function localCurrency(): string {
+  try {
+    const langs =
+      typeof navigator !== 'undefined' && navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [typeof navigator !== 'undefined' ? navigator.language : 'en-AU'];
+    for (const l of langs) {
+      let region: string | undefined;
+      try {
+        region = new Intl.Locale(l).maximize().region;
+      } catch {
+        region = (l.split('-')[1] || '').toUpperCase() || undefined;
+      }
+      if (region && REGION_CCY[region]) return REGION_CCY[region];
+    }
+  } catch {
+    /* ignore */
+  }
+  return 'AUD';
+}
+
+const CCY = localCurrency();
+
 export function formatMoney(n: number): string {
   if (!Number.isFinite(n)) return '—';
   const abs = Math.abs(n);
   const digits = abs > 0 && abs < 1 ? (abs < 0.1 ? 3 : 2) : 2;
-  return n.toLocaleString('en-AU', {
+  return n.toLocaleString(undefined, {
     style: 'currency',
-    currency: 'AUD',
+    currency: CCY,
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   });
